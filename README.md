@@ -3,6 +3,8 @@
 Este projeto documenta uma simulação prática de ataques de força bruta e password spraying utilizando Kali Linux, Medusa, Metasploitable 2 e DVWA.
 O objetivo é entender, na prática, como ocorrem ataques comuns em ambientes vulneráveis, reforçando a importância de boas práticas de segurança.
 
+-------------------------------------------------------------------------------------
+
 *Ambiente de Teste*
 
 As duas máquinas foram configuradas em rede Host-Only no VirtualBox.
@@ -16,7 +18,9 @@ Antes de qualquer teste, foi feito um ping para garantir que as VMs estavam se c
 
 Comando: ping -c 4 192.168.58.102
 
-*1° Etapa: Enumeração de Portas (Nmap)*
+-------------------------------------------------------------------------------------
+
+Enumeração de Portas (Nmap)*
 
 Ferramenta utilizada: Nmap 7.95
 Objetivo: identificar porta FTP aberta
@@ -52,7 +56,7 @@ Comando Brute Force: medusa -h 192.168.56.102 -U usernames.txt -P pass.txt -M ft
 Resultado:
 usuario: msfadmin | senha: msfadmin
 
-
+-------------------------------------------------------------------------------------
 
 *2° Ataque: Brute Force em Aplicação Web (DVWA)*
 
@@ -68,7 +72,7 @@ medusa -h 192.168.56.102 -U users.txt -P pass.txt -M http \
 Resultado:
 usuario: msfadmin | senha: msfadmin
 
-
+-------------------------------------------------------------------------------------
 
 *3° Ataque: Enumeração SMB (enum4linux)*
 
@@ -76,7 +80,7 @@ Ferramenta utilizada: enum4linux v0.9.1
 
 Comando: enum4linux -a 192.168.56.102 | tee enum4_output.txt
 
-
+-------------------------------------------------------------------------------------
 
 *4° Ataque: Password Spraying (Medusa)*
 
@@ -88,12 +92,12 @@ Resultado:
 usuario: msfadmin | senha: msfadmin
 
 
-
 Verificando acesso ao smb:
 
 Comando: smbclient -L //192.168.56.102 -U msfadmin
 A autenticação foi bem-sucedida, exibindo os compartilhamentos disponíveis.
 
+-------------------------------------------------------------------------------------
 
 *Principais Vulnerabilidades Encontradas*
 
